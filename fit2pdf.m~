@@ -4,17 +4,25 @@ function pdf = fit2pdf( fitnesses, w)
 % w - the selection strength
 % returns a probability density function
 
+threshold_w = -1/min(fitnesses);
+
+if (threshould_w > 0) && 
+
+
 if (nargin < 2) || isempty(w), %set the default w
-    if ~sum(fitnesses <= 0), %if all fitnesses are non-zero then inf-w
-        pdf = fitnesses/sum(fitnesses);
+    if ~sum(fitnesses < 0), %if all fitnesses are non-zero then inf-w
+        if sum(fitnesses) == 0,
+            pdf = (fitnesses + 1)/length(fitnesses);
+        else
+            pdf = fitnesses/sum(fitnesses);
+        end;
     else
-        w = 
-    end;
+        w = 1/abs(min(fitnesses));
+        pdf = (1 + w*fitnesses)/(length(fitnesses) + w*sum(fitnesses));
+    end;   
 else
     pdf = (1 + w*fitnesses)/(length(fitnesses) + w*sum(fitnesses));
 end;
-
-
 
 end
 

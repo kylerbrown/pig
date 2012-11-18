@@ -1,6 +1,6 @@
 
 
-function data = pig (adjmx, genotypes, ages, base_fitnesses, gameYoung,gameOld, w, updateRule, max_epoch,pmod,reproduce)
+function [data = pig (adjmx, genotypes, ages, base_fitnesses, gameYoung,gameOld, w, updateRule, max_epoch,pmod,reproduce)
 % function pig (adjmx, agents, game, w, update_rule, max_epoch)
 %   agents is a n by 5 matrix where each row is an agent and for each
 %   agent, the first entry is strategy, second is maturation age, third is
@@ -17,7 +17,7 @@ function data = pig (adjmx, genotypes, ages, base_fitnesses, gameYoung,gameOld, 
 
 max_mat_age = 100;
 data = zeros( max_mat_age,length(gameYoung), max_epoch);
-%age_data=zeros(length(genotypes),1);
+age_data=zeros(length(genotypes),1);
 for epoch = 1:max_epoch
     
     [base_fitnesses, fitnesses] = getFit(adjmx, genotypes, ages, base_fitnesses, gameYoung, gameOld);
@@ -28,7 +28,7 @@ for epoch = 1:max_epoch
     %    sum(fitnesses(genotypes(:,1)==2))/sum((genotypes(:,1)==2))]
     %[sum(base_fitnesses(genotypes(:,1)==1))/sum((genotypes(:,1)==1)), ...
     %    sum(base_fitnesses(genotypes(:,1)==2))/sum((genotypes(:,1)==2))]
-    %age_data(epoch)=sum(genotypes(:,2))/length(genotypes);
+    age_data(epoch)=sum(genotypes(:,2))/length(genotypes);
 end
     
     

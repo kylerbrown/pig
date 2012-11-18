@@ -3,23 +3,23 @@
 %   Detailed explanation goes here
 
 n = 400;
-max_epoch = 1000;
+max_epoch = 3000;
 
-gameYoung = [ 4, 0;
-              4, 0];
+gameYoung = [ .4, 0;
+              .4, 0];
 
 gameOld = [ -1, -1;
             0, 0];
         
-adjmx = ones(n);
+adjmx = adjList2Mx(makeGraph(n,'lattice',4));
 w = .001;
 
 
-strats = ceil(2*(0.7*rand(n,1) + 0.3));
+strats = ceil(2*(1*rand(n,1) + 0));
 mat_ages = randi(10,n,1);
 genotypes = [strats,mat_ages];
 
-pmod = .1;
+pmod = .05;
 pmut = [.001, .05];
 
 reproduce = @(agent) indMutReproduce(agent, pmut);
@@ -31,16 +31,17 @@ tic
 data = pig(adjmx,genotypes,zeros(n,1),zeros(n,1),gameYoung,gameOld, w, updateRule, max_epoch,pmod,reproduce);
 toc
 %%
-figure
-hold
+figure(1)
 plot(squeeze(sum(data(:,1,:),1))','b.');
-plot(squeeze(sum(data(:,2,:),1))','r.');
-
-figure;
-plot((1:size(data,1))*squeeze(data(:,1,:))./max(sum(squeeze(data(:,1,:))),1) ,'m.');
 hold
-plot((1:size(data,1))*squeeze(data(:,2,:))./max(sum(squeeze(data(:,2,:) ,'m.');
+plot(squeeze(sum(data(:,2,:),1))','r.');
+hold off
 
+figure(2)
+plot((1:size(data,1))*squeeze(data(:,1,:))./max(sum(squeeze(data(:,1,:))),1) ,'c.');
+hold
+plot((1:size(data,1))*squeeze(data(:,2,:))./max(sum(squeeze(data(:,2,:))),1) ,'m.');
+hold off
 
 
 
