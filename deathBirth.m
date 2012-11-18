@@ -17,7 +17,7 @@ for i = 1:n_killed
     neighbours_fitnesses=fitnesses(neighbours_indices);
     neighbours_cdf = cumsum(fit2pdf(neighbours_fitnesses,w));
     choices = neighbours_indices(neighbours_cdf > rand);
-    genotypesNew(dead(i)) = genotypesOld(choices(1));
+    genotypesNew(dead(i)) = reproduce(genotypesOld(choices(1)));
 end
 
 
