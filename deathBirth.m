@@ -1,5 +1,5 @@
 function [genotypes ages base_fitnesses fitnesses] = deathBirth( adjmx, ...
-    genotypes, w, fitnesses, pmod, num_strat, mutation_strategy, mutation_mat_age, mutFun )
+    genotypes, w, fitnesses, pmod, mutFun )
 %deathBirth Summary of this function goes here
 %   Detailed explanation goes here
 r = randperm(length(genotypes));
