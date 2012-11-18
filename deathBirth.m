@@ -1,5 +1,5 @@
 function [genotypes ages base_fitnesses fitnesses] = deathBirth( adjmx, ...
-    genotypes, w, fitnesses, pmod, num_strat, mutation_strategy, mutation_mat_age )
+    genotypes, w, fitnesses, pmod, num_strat, mutation_strategy, mutation_mat_age, mutFun )
 %deathBirth Summary of this function goes here
 %   Detailed explanation goes here
 r = randperm(length(genotypes));
@@ -18,6 +18,6 @@ for i = 1:n_killed
 end
 
 for i = 1:n_killed,
-    genotypes(dead(i)) = reproduce(genotypes(choice(i)),num_strat,mutation_strategy,mutation_mat_age) 
+    genotypes(dead(i)) = reproduce(genotypes(choice(i)),mutFun) 
 end
     

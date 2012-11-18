@@ -1,6 +1,6 @@
 
 
-function pig (adjmx, genotypes, ages, base_fitnesses, fitnesses,gameYoung,gameOld, w, updateRule, max_epoch,pmod)
+function pig (adjmx, genotypes, ages, base_fitnesses, fitnesses,gameYoung,gameOld, w, updateRule, max_epoch,pmod,mutFun)
 % function pig (adjmx, agents, game, w, update_rule, max_epoch)
 %   agents is a n by 5 matrix where each row is an agent and for each
 %   agent, the first entry is strategy, second is maturation age, third is
@@ -20,7 +20,7 @@ data = zeros(max_epoch,length(gameYoung), max_mat_age);
 
 for epoch = 1:max_epoch
     [base_fitnesses, fitnesses] = getFit(adjmx, genotypes, ages, base_fitnesses, gameYoung, gameOld);
-    [genotypes ages base_fitnesses fitnesses] = updateRule(adjmx, genotypes, w, fitnesses, pmod);
+    [genotypes ages base_fitnesses fitnesses] = updateRule(adjmx, genotypes, w, fitnesses, pmod, mutFun);
     data(epoch,:) = getData(genotypes,length(gameYoung));
     ages = ages + 1; %ages
 end
@@ -28,4 +28,3 @@ end
     
 
 
-`
