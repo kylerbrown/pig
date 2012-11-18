@@ -7,7 +7,7 @@ data = zeros(max_mat_age,n_strats);
 for i = 1:max_mat_age
     for j = 1:n_strats
         data(i,j)=sum( (genotypes(:,1) == ones(length(genotypes),1)*j) & ...
-            (genotypes(:,2) == ones(length(genotypes),1)*i));
+            (genotypes(:,2) == ones(length(genotypes),1)*(i-1)));
     end
 end
 

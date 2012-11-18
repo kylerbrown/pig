@@ -5,8 +5,12 @@ function pdf = fit2pdf( fitnesses, w)
 % returns a probability density function
 
 if (nargin < 2) || isempty(w), %set the default w
-    if ~sum(fitnesses <= 0), %if all fitnesses are non-zero then inf-w
-        pdf = fitnesses/sum(fitnesses);
+    if ~sum(fitnesses < 0), %if all fitnesses are non-zero then inf-w
+        if sum(fitnesses) == 0,
+            pdf = (fitnesses + 1)/length(fitnesses);
+        else
+            pdf = fitnesses/sum(fitnesses);
+        end;
     else
         w = 1/abs(min(fitnesses));
         pdf = (1 + w*fitnesses)/(length(fitnesses) + w*sum(fitnesses));
