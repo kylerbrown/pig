@@ -4,10 +4,6 @@ function pdf = fit2pdf( fitnesses, w)
 % w - the selection strength
 % returns a probability density function
 
-threshold_w = -1/min(fitnesses);
-
-if (threshould_w > 0) && 
-
 
 if (nargin < 2) || isempty(w), %set the default w
     if ~sum(fitnesses < 0), %if all fitnesses are non-zero then inf-w
@@ -21,7 +17,16 @@ if (nargin < 2) || isempty(w), %set the default w
         pdf = (1 + w*fitnesses)/(length(fitnesses) + w*sum(fitnesses));
     end;   
 else
-    pdf = (1 + w*fitnesses)/(length(fitnesses) + w*sum(fitnesses));
+    if (length(fitnesses) + w*sum(fitnesses)) > 0,
+        pdf = (1 + w*fitnesses)/(length(fitnesses) + w*sum(fitnesses));
+    else
+        'Non-positive normalizer'
+        pdf = ones(length(fitnesses),1))/length(fitnesses);
+    end;
+end;
+
+if (min(pdf) < 0)
+    'We fucked up'   
 end;
 
 end

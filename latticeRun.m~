@@ -5,22 +5,22 @@
 n = 400;
 max_epoch = 5000;
 
-gameYoung = [ 0.28, 0;
-              0.28, 0];
+gameYoung = [ 4, 0;
+              4, 0];
 
 gameOld = [ -1, -1;
             0, 0];
         
 adjmx = adjList2Mx(makeGraph(n,'lattice',4));
-w = .25;
+w = .001;
 
-p_deffect = .5;
-strats = (rand(n,1)<p_deffect)+1;
+p_coop = .7
+strats = rand(n,1);
 mat_ages = randi(10,n,1);
 genotypes = [strats,mat_ages];
 
 pmod = .05;
-pmut = [.001, .05];
+pmut = [.001, .005];
 
 reproduce = @(agent) indMutReproduce(agent, pmut);
 
