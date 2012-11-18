@@ -3,6 +3,8 @@ function [genotypesNew ages base_fitnesses] = birthDeath( adjmx, ...
 %BIRTHDEATH Summary of this function goes here
 %   reproduce is a function
 
+%THIS NEEDS TO BE FIXED AFTER FOOD TO HAVE ONLY MATURE REPRODUCE
+fitnesses=base_fitnesses+fitnesses;
 num_list = 1:length(genotypesOld);
 
 genotypesNew = genotypesOld;

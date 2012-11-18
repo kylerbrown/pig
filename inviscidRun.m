@@ -5,8 +5,8 @@
 n = 100;
 max_epoch = 3000;
 
-gameYoung = [ 0.3,0;
-              0.3, 0];
+gameYoung = [ 0.,0;
+              0., 0];
 
 gameOld = [ -2, 0;
             -2, 0];
@@ -28,7 +28,7 @@ updateRule = @deathBirth;
 
 
 tic
-data = pig(adjmx,genotypes,zeros(n),zeros(n),gameYoung,gameOld, w, updateRule, max_epoch,pmod,reproduce);
+data = pig(adjmx,genotypes,zeros(n,1),zeros(n,1),gameYoung,gameOld, w, updateRule, max_epoch,pmod,reproduce);
 toc
 figure;
 hold;
