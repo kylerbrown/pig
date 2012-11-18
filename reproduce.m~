@@ -1,0 +1,7 @@
+function [ new_genotypes ] = reproduce( genotypes, mutFun )
+%REPRODUCE Summary of this function goes here
+%   Detailed explanation goes here
+
+new_genotypes=genotypes;
+mut=rand(size(genotypes)<
+

@@ -18,6 +18,6 @@ for i = 1:n_killed
 end
 
 for i = 1:n_killed,
-    genotypes(dead(i)) = reproduce(genotypes(choice(i)),mutFun) 
+    genotypes(dead(i)) = reproduce(genotypes(choice(i)),mutFun);
 end
     

@@ -1,7 +1,8 @@
-function [ output_args ] = reproduce( genotypes, mutFun )
-%REPRODUCE Summary of this function goes here
+function [ new_genotypes ] = indMutReproduce( genotypes, pmut )
+%indMutReproduce 
 %   Detailed explanation goes here
-
-
-end
+% genotypes, rows are agents, collumns are genes
+% first gene is strat, second is mat_age
+new_genotypes=genotypes;
+mut=rand(size(genotypes)<
 
