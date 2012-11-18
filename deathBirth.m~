@@ -3,9 +3,6 @@ function [genotypesNew ages base_fitnesses fitnesses] = deathBirth( adjmx, ...
 %deathBirth Summary of this function goes here
 %   Detailed explanation goes here
 %   reproduce is a function
-
-genotypesNew = genotypesOld;
-
 r = randperm(length(genotypes));
 n_killed = floor(length(genotypes)*pmod);
 dead = r(1:n_killed);
@@ -15,7 +12,8 @@ for i = 1:n_killed
     
     neighbours_indices = num_list(adjmx(dead(i),:)==1);
     neighbours_fitnesses=fitnesses(neighbours_indices);
-    neighbours_cdf = cumsum(fit2pdf(neighbours_fitnesses,w));
+    neighbours_pdf = (1 + w*neighbours_fitnesses)/(length(neighbours_indices) + w*sum(neighbours_fitnesses));
+    neighbours_cdf = cumsum(fit2pdf());
     choices = neighbours_indices(neighbours_cdf > rand);
     genotypesNew(dead(i)) = genotypesOld(choices(1));
 end
