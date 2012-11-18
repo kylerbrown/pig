@@ -1,5 +1,5 @@
-function [genotypesNew ages base_fitnesses fitnesses] = birthDeath( adjmx, ...
-    genotypesOld, w, fitnesses, pmod, reproduce)
+function [genotypesNew ages base_fitnesses] = birthDeath( adjmx, ...
+    genotypesOld, ages, base_fitnesses, w, fitnesses, pmod, reproduce)
 %BIRTHDEATH Summary of this function goes here
 %   reproduce is a function
 
@@ -7,7 +7,7 @@ num_list = 1:length(genotypesOld);
 
 genotypesNew = genotypesOld;
 
-agents_cdf = cumsum(fun2pdf(fitness,w));
+agents_cdf = cumsum(fun2pdf(fitnesses,w));
 
 for i=1:floor(length(genotypesOld)*pmod),
     %select the first agent that passes the cdf threshold
@@ -20,6 +20,8 @@ for i=1:floor(length(genotypesOld)*pmod),
     %pick a neighbour uniformly at random.
     child = neighbours_indices(ceil(rand*length(neighbours_indices)));
     
-    genotypesNew(child) = reproduce(genotypesOld(parent));
+    genotypesNew(child,:) = reproduce(genotypesOld(parent,:));
+    ages(child) = 0;
+    base_fitnesses(child) = 0;
 end
 
