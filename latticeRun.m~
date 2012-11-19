@@ -3,33 +3,40 @@
 %   Detailed explanation goes here
 
 n = 400;
-max_epoch = 5000;
+max_epoch = 4000;
 
-gameYoung = [ 4, 0;
-              4, 0];
+
 
 gameOld = [ -1, -1;
             0, 0];
         
-adjmx = adjList2Mx(makeGraph(n,'lattice',4));
-w = .001;
 
-p_coop = .7
-strats = rand(n,1);
+w = 1/4;
+
+p_deffect = .5;
+strats = (rand(n,1)<p_deffect)+1;
 mat_ages = randi(10,n,1);
 genotypes = [strats,mat_ages];
 
 pmod = .05;
-pmut = [.001, .005];
+pmut = [.0001, .01];
 
 reproduce = @(agent) indMutReproduce(agent, pmut);
 
 updateRule = @deathBirth;
 
+for 
 
+gameYoung = [ .5, 0;
+              .5, 0];
+adjmx = adjList2Mx(makeGraph(n,'lattice',4));
 tic
 data = pig(adjmx,genotypes,zeros(n,1),zeros(n,1),gameYoung,gameOld, w, updateRule, max_epoch,pmod,reproduce);
 toc
+
+  data_files = dir(datadir);
+  save_num = size(data_files,1)-1;
+  save([datadir,dataname,sprintf('%04d',save_num)]);
 %%
 figure(1)
 plot(squeeze(sum(data(:,1,:),1))','b.');
