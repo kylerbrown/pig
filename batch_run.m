@@ -1,7 +1,7 @@
 % this script runs and saves data
 
 num_iterations = 1;
-datadir = 'home/2007/kbrown53/pigdata/';
+datadir = '/home/2007/kbrown53/pigdata/';
 dataname = 'test';
 for i = 1:num_iterations
   latticeRun
