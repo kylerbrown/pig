@@ -9,11 +9,9 @@ lab7-6
 lab7-8
 lab7-9
 lab7-10
-lab7-11
 lab7-12
 lab7-13
 lab7-14
-lab7-15
 lab7-16
 lab7-17
 lab7-18
@@ -27,7 +25,7 @@ lab7-24"
 for i in $machines
 do
 echo $i started
-(ssh -o "StrictHostKeyChecking no" $i "matlab -r batch_run") &
+(ssh -o "StrictHostKeyChecking no" $i "matlab -nodesktop -r batch_run") &
 echo $i done
 done
 
