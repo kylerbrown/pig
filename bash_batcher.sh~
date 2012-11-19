@@ -1,0 +1,10 @@
+#!/bin/bash
+
+#connect to client
+ssh lab7-10
+
+#run script
+matlab -r foo.m
+
+#disconnect to client
+exit

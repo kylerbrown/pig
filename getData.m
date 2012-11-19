@@ -11,3 +11,4 @@ for i = 1:max_mat_age
     end
 end
 
+%TODO, chech if max_mat_age is exceeded.
