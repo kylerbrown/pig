@@ -3,7 +3,7 @@
 %   Detailed explanation goes here
 
 n = 1024;
-max_epoch = 1000;
+max_epoch = 4000;
 
 
 
@@ -15,7 +15,7 @@ w = 1/4;
 
 p_deffect = .5;
 strats = (rand(n,1)<p_deffect)+1;
-mat_ages = randi(10,n,1);
+mat_ages = randi(5,n,1);
 genotypes = [strats,mat_ages];
 
 pmod = .05;
@@ -38,6 +38,7 @@ datadir = '/home/2007/kbrown53/pigdata/';
 dataname = 'random-regular';
 data_files = dir([datadir,dataname,sprintf('%03d',i),'*']);
 save_num = size(data_files,1)+1;
+save([datadir,dataname,sprintf('%03d',i),'_',sprintf('%04d',save_num)],'i'); %create a quick dummy file to reserve the filename
 save([datadir,dataname,sprintf('%03d',i),'_',sprintf('%04d',save_num)]);
 end
 %%

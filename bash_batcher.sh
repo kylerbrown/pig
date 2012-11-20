@@ -97,7 +97,23 @@ lab6-24
 lab6-25
 lab6-26
 lab6-27
-lab6-28"
+lab6-28
+open-1
+open-2
+open-3
+open-4
+open-5
+open-6
+open-7
+open-8
+open-9
+open-10
+open-11
+open-12
+open-13
+open-14
+open-15
+open-16"
 
 for i in $machines
 do
