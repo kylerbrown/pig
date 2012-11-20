@@ -2,8 +2,8 @@
 %UNTITLED Summary of this function goes here
 %   Detailed explanation goes here
 
-n = 512;
-max_epoch = 50;
+n = 1024;
+max_epoch = 1000;
 
 
 
@@ -25,7 +25,7 @@ reproduce = @(agent) indMutReproduce(agent, pmut);
 
 updateRule = @deathBirth;
 
-for i=0:10
+for i=0:0
 
 gameYoung = [ i/10, 0;
               i/10, 0];
@@ -38,7 +38,7 @@ datadir = '/home/2007/kbrown53/pigdata/';
 dataname = 'random-regular';
 data_files = dir([datadir,dataname,sprintf('%03d',i),'*']);
 save_num = size(data_files,1)+1;
-save([datadir,dataname,sprintf('%02d',i),'_',sprintf('%04d',save_num)]);
+save([datadir,dataname,sprintf('%03d',i),'_',sprintf('%04d',save_num)]);
 end
 %%
 % figure(1)
