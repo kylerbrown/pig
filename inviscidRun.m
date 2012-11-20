@@ -3,7 +3,7 @@
 %   Detailed explanation goes here
 
 n = 400;
-max_epoch = 1000;
+max_epoch = 2000;
 
 gameYoung = [ .4, 0;
               .4, 0];

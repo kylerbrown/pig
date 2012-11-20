@@ -118,7 +118,8 @@ open-16"
 for i in $machines
 do
 echo $i started
-(ssh -o "StrictHostKeyChecking no" $i "matlab -nodesktop -r batch_run") &
-echo $i done
+(ssh -o "StrictHostKeyChecking no" $i "matlab -nodesktop -r batch_run";
+echo $i done) &
+
 done
 

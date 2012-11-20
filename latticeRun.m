@@ -3,7 +3,7 @@
 %   Detailed explanation goes here
 
 n = 1024;
-max_epoch = 4000;
+max_epoch = 10000;
 
 
 
@@ -25,7 +25,7 @@ reproduce = @(agent) indMutReproduce(agent, pmut);
 
 updateRule = @deathBirth;
 
-for i=3:3
+for i=10:10
 
 gameYoung = [ i/10, 0;
               i/10, 0];
