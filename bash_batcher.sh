@@ -1,6 +1,7 @@
 #!/bin/bash
 
-machines="lab7-1
+machines="ubuntu
+lab7-1
 lab7-2
 lab7-3
 lab7-4
