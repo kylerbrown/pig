@@ -25,7 +25,7 @@ reproduce = @(agent) indMutReproduce(agent, pmut);
 
 updateRule = @deathBirth;
 
-for i=10:10
+for i=5:5
 
 gameYoung = [ i/10, 0;
               i/10, 0];
