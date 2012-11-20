@@ -1,4 +1,4 @@
-filekey='random-regular000*.mat';
+filekey='random-regular010*.mat';
 
 %runthrough and remove corrupted data
 files = dir(filekey);
@@ -32,14 +32,31 @@ end
 
 %%
 
-figure(1)
+f1 = figure(1)
 plot(popdatacoop,'b');
 hold
 plot(popdatadef,'r');
+plot(mean(popdatacoop,2),'c',...
+                'LineWidth',4)
+            plot(mean(popdatadef,2),'m',...
+                'LineWidth',4)
 hold off
-
-figure(2)
+title('B/C = 1')
+ylabel('# agents')
+xlabel('cycle')
+print(f1,'-dtiff','BC10_pop')
+%
+f2 = figure(2)
 plot(agedatacoop,'b');
 hold
 plot(agedatadef,'r');
+plot(mean(agedatacoop,2),'c',...
+                'LineWidth',4)
+            plot(mean(agedatadef,2),'m',...
+                'LineWidth',4)
 hold off
+
+title('B/C = 1')
+ylabel('maturation age')
+xlabel('cycle')
+print(f2,'-dtiff','BC10_age')
