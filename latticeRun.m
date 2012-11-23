@@ -25,17 +25,17 @@ reproduce = @(agent) indMutReproduce(agent, pmut);
 
 updateRule = @deathBirth;
 
-for i=5:5
+for i=2:2
 
 gameYoung = [ i/10, 0;
               i/10, 0];
-adjmx = adjList2Mx(makeGraph(n,'random-regular',4));
+adjmx = adjList2Mx(makeGraph(n,'lattice',4));
 tic
 data = pig(adjmx,genotypes,zeros(n,1),zeros(n,1),gameYoung,gameOld, w, updateRule, max_epoch,pmod,reproduce);
 toc
 
 datadir = '/home/2007/kbrown53/pigdata/';
-dataname = 'random-regular';
+dataname = 'lattice';
 data_files = dir([datadir,dataname,sprintf('%03d',i),'*']);
 save_num = size(data_files,1)+1;
 save([datadir,dataname,sprintf('%03d',i),'_',sprintf('%04d',save_num)],'i'); %create a quick dummy file to reserve the filename
